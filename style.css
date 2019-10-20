@@ -19,8 +19,8 @@ body {
     animation-duration :3s;
     animation-iteration-count: infinite;
     position: relative;
-    overflow-x:hidden;
-    font-size:13px;
+    overflow-x: hidden;
+    font-size: 13px;
     height: 100vh;
 }
 @keyframes bodybackground {
@@ -415,6 +415,10 @@ footer ul {
         height: auto;
         padding-left: 10px;
         transition: none;
+        border-left: 2px solid black;
+    }
+    .dropbtn > a > i {
+        display: none;
     }
     #navbar-toggle-cbox:checked ~ #main-menu {
         display: block;
