@@ -2,54 +2,96 @@
 <html>
 
 <head>
+    <title>Nieuws</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <script src="https://kit.fontawesome.com/4b97de1df9.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a>Sport</a></li>
-            <li><a>Buitenland</a></li>
-            <li><a>Contact</a></li>
-            <li class="dropbtn"><a href="shop.html">Shop <i class="fas fa-angle-down"></i></a>
-                <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
-                </div>
-            </li>
+            
+            <input type="checkbox" id="navbar-toggle-cbox">
+            <label for="navbar-toggle-cbox" class="navbar-toggle collapsed" id="collapse-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fas fa-bars" id="toggle-on"></i>
+                <i class="fas fa-times" id="toggle-off"></i>
+            </label> 
+            
+            <div id="main-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sport.html">Sport</a></li>
+                <li><a href="buitenland.html">Buitenland</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="dropbtn"><a href="shop.html">Shop <i class="fas fa-angle-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="checkout.html">Checkout</a>
+                        <a href="bedankt.html">Bedankt</a>
+                        <a href="#">Empty link</a>
+                    </div>
+                </li>
+            </div>        
         </ul>
     </nav>
 
     <header>
         <div id="headerpicture"></div>
         <h1 id="headertext">Al uw nieuws op een plek</h1>
+        <div id="flying-papers">
+            <object data="svg/krant.svg" type="image/svg+xml" class="krant" id="krant1"></object>
+            <object data="svg/krant.svg" type="image/svg+xml" class="krant" id="krant2"></object>
+            <object data="svg/krant.svg" type="image/svg+xml" class="krant" id="krant3"></object>
+            <object data="svg/krant.svg" type="image/svg+xml" class="krant" id="krant4"></object>
+        </div>
     </header>
+
     <section>
-        <article class="artikel" id="artikel1">
-
-        </article> 
-        <article class="artikel" id="artikel2">
-
+        
+        <article class="artikel">
+            <a href="https://nos.nl/artikel/2306751-tientallen-arrestaties-na-avond-vol-rellen-in-catalonie.html">
+                <img class="background-image" src="./img/catalonie.jpg">
+                <h1>Tientallen arrestaties in catalonië</h1>
+            </a>
         </article>
-        <article class="artikel" id="artikel3">
-
+       
+        <article class="artikel">
+            <a href="https://nos.nl/artikel/2306727-brexitdeal-verdeelt-noord-ierland-onverkropbaar-of-enige-garantie-op-vrede.html">
+                <img class="background-image" src="./img/brexit.jpg">
+                <h1>brexitdeal verdeelt Noord-Ierland</h1>
+            </a>
         </article>
-        <article class="artikel" id="artikel4">
-
+        
+        <article class="artikel">
+            <a href="https://nos.nl/artikel/2306652-nederlandse-luchtaanval-in-irak-veroorzaakte-zeker-zeventig-burgerdoden.html">
+                <img class="background-image" src="./img/irak.jpg">
+                <h1>Nederlandse luchtaanval veroorzaakte zeker 70 burgerdoden</h1>
+            </a>
         </article>
-        <article class="artikel" id="artikel5">
-
+        
+        <article class="artikel">
+            <a href="https://nos.nl/artikel/2306580-waarom-staan-sommige-pensioenfondsen-er-goed-voor-en-andere-niet.html">
+                <img class="background-image" src="./img/pensioen.jpg">
+                <h1>Waarom staan sommige pensioenfondsen er goed voor en sommige niet</h1>
+            </a>
         </article>
-        <article class="artikel" id="artikel6">
-
+    
+        <article class="artikel">
+            <a href="https://nos.nl/artikel/2306745-stranden-bonaire-erger-vervuild-dan-noordzeestranden.html">
+                <img class="background-image" src="./img/strand.jpg">
+                <h1>stranden bonaire vervuild</h1>
+            </a>
         </article>
-
-
+        
+        <article class="artikel">
+            <a href="https://nos.nl/artikel/2306754-norm-voor-pfas-stoffen-hard-nodig-maar-is-extra-uitdaging-voor-de-bouw.html">
+                <img class="background-image" src="./img/stoffen.jpg">
+                <h1>norm voor pfas stoffen hard nodig</h1>
+            </a>
+        </article>
+        
     </section>
+    
     <footer>
         <div id="footerinfo">
             <ul>
@@ -64,5 +106,4 @@
     </footer>
 
 </body>
-
 </html>

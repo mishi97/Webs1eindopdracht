@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap'); /* Default font */
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap'); /* Nav font */
+@import url('https://fonts.googleapis.com/css?family=Patua+One&display=swap'); /* Artikel font */
 
 :root {
+    --page-bg-color: rgb(32, 67, 147);
     --nav-bg-color: #DCE4F2;
     --nav-bg-hover: #c6cdda;
 }
@@ -12,7 +14,18 @@
     font-family: 'Roboto', sans-serif;
 }
 body {
-    background-color: rgb(32, 67, 147);
+    background-color: var(--page-bg-color);
+    animation-name:bodybackground;
+    animation-duration :3s;
+    animation-iteration-count: infinite;
+    position: relative;
+    overflow-x:hidden;
+    font-size:13px;
+    height: 100vh;
+}
+@keyframes bodybackground {
+    0% {background-color: rgb(32, 67, 140);}
+    25% {background-color: rgb(32, 67, 110)} 
 }
 
 section {
@@ -27,51 +40,33 @@ nav {
     background-color: var(--nav-bg-color);
     display: flex;
     flex-direction: column;
-    padding: 5px;
-    padding-left: 50px;
 }
 nav ul {
-    padding: 5px;
     font-size: 23px;
     list-style-type: none;
 }
-nav ul li {
-    display: inline-block;
-    padding: 0 10px 0 10px;
-}
-
 nav li {
     position: relative;
+    display: inline-block;
     color: #000;
     cursor: pointer;
+    padding: 10px;
 }
 nav li a {
     text-decoration: none;
     color: #000;
     font-family: 'Lato', sans-serif;
 }
-nav li>a:before {
-    content: "";
-    position: absolute;
-    width: calc(100% - 20px);
-    margin-left: 10px;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background-color: #000;
-    visibility: hidden;
-    -webkit-transform: scaleX(0);
-    transform: scaleX(0);
-    -webkit-transition: all 0.3s ease-in-out 0s;
-    transition: all 0.3s ease-in-out 0s;
+
+#navbar-toggle-cbox {
+    display:none
 }
-  
-nav li>a:hover:before {
-    visibility: visible;
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
+#collapse-toggle {
+    padding: 10px;
 }
+
 .dropdown-content {
+    margin-top: 10px;
     display: block;
     position: absolute;
     background-color: var(--nav-bg-color);
@@ -79,6 +74,7 @@ nav li>a:hover:before {
     z-index: 1;
     height: 0px;
     overflow: hidden;
+    transition: all 0.5s linear;
 }
 
 .dropdown-content a {
@@ -97,7 +93,6 @@ nav li>a:hover:before {
 
 .dropbtn:hover .dropdown-content {
     height: 120px;
-    transition: all 0.5s linear;
 }
 
 .artikel {
@@ -110,17 +105,33 @@ nav li>a:hover:before {
     animation-duration:0.5s;
     background-size:cover;
     background-position:center;
-    
-    
+    position:relative;
+    overflow:hidden;
 }
-#artikel1 {
-    background-image:linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9)),url("img/donald.jpg");
+.artikel .background-image {
+    object-fit:cover;
+    width:100%;
+    height:100%;
+    top:0px;   
+    position:absolute; 
 }
-#artikel2 {
-    background-image:linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9)),url("img/tractoren.jpg");
+.artikel h1 {
+    position:absolute;
+    bottom:0;
+    font-family: 'Patua One', cursive;
+    font-size:40px;
+    color:white;
+    font-style:bold;
+    padding:10px;
+    -webkit-text-stroke: 1px black;
 }
-#artikel3 {
-    background-image:linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9)),url("img/parlement.png");
+@keyframes invliegen {
+    0% {
+        margin-left:-2000px;
+    }
+    100% {
+        margin-left:0px;
+    }
 }
 .artikel:hover {
     animation-name:artikelhover;
@@ -139,6 +150,34 @@ nav li>a:hover:before {
 header {
     display:none;
     position:relative;
+    overflow:hidden;  
+}
+
+header .krant {
+    position: absolute;
+    animation-name:vliegende_krant;
+    animation-duration:5s;
+    animation-iteration-count: infinite;
+}
+header #krant1 {
+    top :20px;
+
+}
+header #krant2 {
+    top:150px;
+    animation-delay:-1s;
+}
+header #krant3 {
+    top:220px;
+    animation-delay:-2s;
+}
+header #krant4 {
+    top:10px;
+    animation-delay:-3s;
+}
+@keyframes vliegende_krant {
+    0% {margin-left:-50px;opacity:1;transform: rotate(0deg)}
+    100%{margin-left:1500px; opacity:0;transform: rotate(1000deg)}
 }
 #headerpicture {
     background-image:url("img/banner1.jpg");
@@ -165,30 +204,126 @@ footer {
     display: flex;
     padding: 10px;
     flex-direction: column;
-    padding:20px;
+    position:sticky;
+    bottom:0;
+    width:100%;
+    font-size:13px;
 }
 
 footer #searchbar {
-    border: 3px solid #6D7E8C;
-    border-radius: 10px;
-    margin-top:20px;
-    height: 30px;
-    padding: 10px;
+    border:none;
+    border-bottom: 2px solid grey;
+    padding: 5px;
     width: calc(100% - 20px);
-    font-size: 20px;
-    justify-content: center;
+    padding-left: 10px;
     background-color: #DCE4F2;
-    color:#6D7E8C;
     
 }
 footer ul {
     float:left;
     list-style-type:none;
 }
-.contactpagina {
+#contactpagina {
     display:flex;
+    flex-direction: column;
+    padding:0;
+    flex-wrap:wrap;
+    align-items:stretch;
 }
+#contactpagina #infovak {
+    background: url("img/krant.jpg");
+    color:white;
+    padding-top:60px;
+    background-size:cover;
+}
+#contactpagina #infovak .contact ul {
+    list-style-type: none;
+}
+#contactpagina #contactformulier form{
+    display:flex;
+    flex-direction:column;
+    justify-content:start;
+    width:100%;
+    padding:0;
+}
+#contactpagina #contactformulier .text-input, .input, .submitbutton  {
+    margin:10px;
+}
+#contactpagina #contactformulier .text-input input,textarea {
+    width:calc(100% - 20px);
+    padding:10px;
+    padding-left:4px;
+    border:none;
+    border-bottom:2px solid grey;
+    background-color : #DCE4F2;
 
+}
+#contactpagina #contactformulier .text-input input:hover,textarea:hover {
+    animation-name:inputhover;
+    animation-duration:0.7s;
+    border-bottom:2px solid black;
+    background-color: rgba(220, 228, 242, 0.767);
+
+}
+@keyframes inputhover {
+    0% {
+        border-bottom:2px solid grey;
+        background-color : #DCE4F2;
+    }
+    100% {
+        border-bottom:2px solid black;
+        background-color: rgba(220, 228, 242, 0.767);
+    }
+}
+#contactpagina {
+    display:flex;
+    flex-direction:column;
+}
+#contactpagina #contactformulier .submitbutton {
+    width:200px;
+    background-color:rgb(14, 82, 31);
+    padding:10px;
+    border-radius:5px;
+    font-size:20px;
+    border:none;
+}
+#contactpagina #contactformulier .submitbutton:hover {
+    background-color:green;
+}
+#bedanktbericht {
+    font-size:30px;
+    width:100%;
+    padding:20px;
+    text-align:center;
+    animation:invliegen;
+    animation-duration:2s;
+}
+#bedanktbericht h2{
+    color:black;
+    
+    padding:10px;
+
+}
+#bedanktbericht h2 a {
+    text-decoration:none;
+}
+#bedanktbericht h2:hover {
+    animation-name:jump;
+    animation-duration:0.6s;
+    animation-iteration-count: infinite;
+    color:darkblue;
+}   
+@keyframes jump {
+    0% {
+        padding:10px;
+    }
+    50% {
+        padding:0px;
+    }
+    100% {
+        padding:10px;
+    }
+}
 
 @media only screen and (min-width: 700px) {
     section {
@@ -196,12 +331,38 @@ footer ul {
         justify-content: center;
     }
 
+
     .artikel {
         width: 450px;
     }
 
     nav {
         flex-direction: row;
+        padding-left: 50px;
+    }
+    nav li:not(:last-child):before {
+        content: "";
+        position: absolute;
+        width: calc(100% - 20px);
+        margin-left: 10px;
+        height: 2px;
+        bottom: 5px;
+        left: 0;
+        background-color: #000;
+        visibility: hidden;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transition: all 0.3s ease-in-out 0s;
+        transition: all 0.3s ease-in-out 0s;
+    }
+      
+    nav li:not(:last-child):hover:before {
+        visibility: visible;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+    #collapse-toggle {
+        display: none;
     }
 
     footer {
@@ -216,5 +377,53 @@ footer ul {
     }
     header {
         display:block;
+    }
+    #contactpagina {
+        flex-direction:row;
+        
+
+    }
+    #contactpagina #infovak {
+        width:400px;
+        
+
+        margin:0;
+    }
+    #contactpagina #contactformulier {
+        flex-grow:1;
+        margin:0;
+    }
+}
+@media only screen and (max-width: 699px) {   
+    #toggle-off {
+        display: none;
+    }
+    #collapse-toggle {
+        display: block;
+    }
+    #main-menu {
+        display: block;
+        height: 0px;
+        overflow: hidden;
+        transition: all 0.5s linear;
+    }
+    nav li {
+        display: block;
+    }
+    .dropdown-content {
+        position: relative;
+        height: auto;
+        padding-left: 10px;
+        transition: none;
+    }
+    #navbar-toggle-cbox:checked ~ #main-menu {
+        display: block;
+        height: 373px;
+    }
+    #navbar-toggle-cbox:checked ~ label>#toggle-off {
+        display: block;
+    }
+    #navbar-toggle-cbox:checked ~ label>#toggle-on {
+        display: none;
     }
 }
