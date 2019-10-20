@@ -114,6 +114,10 @@ nav li a {
     height:100%;
     top:0px;   
     position:absolute; 
+    transition: all .4s ease-in-out;
+}
+.artikel:hover .background-image {
+    transform: scale(1.1);
 }
 .artikel h1 {
     position:absolute;
